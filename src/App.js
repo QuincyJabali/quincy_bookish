@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import GetProductComponent from './components/GetProductComponent';
+import AddProductComponent from './components/AddProductComponent';
+import SignUpComponent from './components/SignUpComponent';
+import SignInComponent from './components/SignInComponent';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js"
+import MakePaymentComponent from './components/MakePaymentComponent';
+
 
 function App() {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="container-fluid">
+        <div className="App">
+          {/* <header className="App-header">
+            <h1>Bookish</h1>
+          </header> */}
+
+          <Routes>
+            <Route path='/' element={<GetProductComponent/>} />
+            <Route path='/addproduct' element={<AddProductComponent/>} />
+            <Route path='/signup' element={<SignUpComponent/>} />
+            <Route path='/signin' element={<SignInComponent/>} />
+            <Route path='/makepayment' element={<MakePaymentComponent />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
