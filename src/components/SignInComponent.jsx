@@ -79,7 +79,7 @@ const SignInComponent = () => {
                         value={password}
                     />
                     <br />
-                    <button className="btn btn-success">Sign in</button>
+                    <button className="btn btn-danger">Sign in</button>
                     <br />
                     <Link to="/signup" >Don't have an account? Sign Up</Link>
                 </form>

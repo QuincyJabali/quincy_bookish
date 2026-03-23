@@ -7,6 +7,7 @@ import SignInComponent from './components/SignInComponent';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js"
 import MakePaymentComponent from './components/MakePaymentComponent';
+import FooterComponent from './components/FooterComponent';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
           {/* <header className="App-header">
             <h1>Bookish</h1>
           </header> */}
-
+          
           <Routes>
             <Route path='/' element={<GetProductComponent/>} />
             <Route path='/addproduct' element={<AddProductComponent/>} />
@@ -27,6 +28,7 @@ function App() {
             <Route path='/makepayment' element={<MakePaymentComponent />} />
           </Routes>
         </div>
+        <FooterComponent/>
       </div>
     </BrowserRouter>
   );

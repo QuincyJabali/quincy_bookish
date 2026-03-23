@@ -94,7 +94,7 @@ const SignUpComponent = () => {
                         required value={password}
                     />
                     <br />
-                    <button className="btn bg-success my-3">
+                    <button className="btn bg-danger my-3">
                         Sign Up
                     </button>
                     <br />

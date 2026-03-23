@@ -135,7 +135,7 @@ const AddProductComponent = () => {
                         />
                         <br />
 
-                        <button className="btn btn-success">Submit</button>
+                        <button className="btn btn-danger">Submit</button>
                     </form>
                 </div>
             </div>
