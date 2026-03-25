@@ -1,91 +1,78 @@
-// import axios from "axios"
-// import { useState } from "react"
-// const SearchBarComponent = ()=> {
-//     let [input,setInput]=useState("")
+import { useEffect, useState } from "react";
+import NavbarComponent from "./NavbarComponent"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-//     const getData =async (value) => {
-       
-        
-//        try {
-//         const response = await axios.get("https://quincyj.alwaysdata.net/api/get_products")
-//         if (response === 200){
-//             setInput(response.data)
-//         }
-//        } catch (error) {
-        
-//        }
-//     }
+const GetProductComponent = () => {
+    let [products, setProducts] = useState([]);
+    let [loading, setLoading] = useState("");
+    let [error, setError] = useState("");
+    let [search_word,setSearchWord]=useState("")
+    let [filtered_products,setFilteredProducts]=useState([])
 
-  
-//     return(
-//         <div id="input-wrapper" onSubmit={getData}>
-//             <input type="text"
-//              placeholder="search" 
-//              onChange={(e)=>{setInput(e.target.value)}}  
-//              value={input}
-//              className="search"
-//              />
-//              <button className="btn btn-outline-success">search</button>
-//         </div>
-//     )
-// }
-// export default SearchBarComponent;
+    let navigator = useNavigate()
 
-import React, { useState, useEffect, useMemo  } from 'react';
+    //Base url for image path from server 
+    const img_url = "https://quincyj.alwaysdata.net/static/images/"
 
-function DataFilterComponent() {
-  const [originalData, setOriginalData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+    //Create a function to fetch product from server
+    const getProducts = async () => {
+        setError("")
+        setLoading("Fetching products. Please wait...");
+        try {
+            const response = await axios.get("https://quincyj.alwaysdata.net/api/get_products");
+            console.log(response)
+            if (response.status === 200) {
+                setLoading("")
+                setProducts(response.data)
+            }
+        } catch (error) {
+            setLoading("");
+            setError(error.message);
+        }
+    };
 
-  useEffect(() => {
-    // Replace with your actual API call
-    fetch('https://quincyj.alwaysdata.net/api/product_details')
-      .then(response => response.json())
-      .then(data => {
-        setOriginalData(data);
-        setFilteredData(data); // Initially, all data is filtered data
-      });
-  }, []);
-  // ...
+    useEffect(() => {
+        getProducts();
+    }, []);
 
-  // ... (fetch and state code from step 1) ...
-
-const memoizedFilteredData = useMemo(() => {
-  if (!searchTerm) return originalData;
-
-  return originalData.filter(item =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-}, [originalData, searchTerm]);
-// ...
-
-
-return(
+    const handleSearch = (search_word) => {
+      let filtered = products.filter((product)=> product.product_name.toLowercase().includes(search_word.toLowercase()))
+      useEffect(()=>{handleSearch(search_word);},[search_word])
+    }
+    return (
         <div>
-        // ... inside DataFilterComponent render ...
-<input
-  type="text"
-  placeholder="Search by name..."
-  value={searchTerm}
-  onChange={(e) => setSearchTerm(e.target.value)}
-/>
-{/* // ... */}
+            <NavbarComponent />
+            <div className="row">
+                <h3 className="mt-5">Available Products</h3>
+                <h6 className="text-warning">{loading}</h6>
+                <h6 className="text-danger">{error}</h6>
 
-{/* // ... inside DataFilterComponent render ... */}
-{memoizedFilteredData.length > 0 ? (
-  <ul>
-    {memoizedFilteredData.map(item => (
-      <li key={item.id}>{item.name}</li>
-    ))}
-  </ul>
-) : (
-  <p>No matching results found.</p>
-)}
+                <input type="text"
+                placeholder="search here"
+                className="form-control"
+                value={search_word}
+                onChange={(e)=> setSearchWord(e.target.value)} />
 
-
+                {filtered_products.map((product) => (
+                    <div className="col-md-3 justify-content-center mb-4">
+                        <div className="card shadow-margin">
+                            <img src={img_url + product.product_image} alt="" className="product_img mt-4" />
+                            <div className="card-body">
+                                <h5 className="mt-2">{product.product_name}</h5>
+                                <p className="text-muted">{product.product_description}</p>
+                                <p className="text-danger">{product.product_author}</p>
+                                <b className="text-warning">{product.product_cost}</b>
+                                <br />
+                                <br />
+                                <button className="btn btn-danger" onClick={()=> {navigator("/makepayment",{state:{product}})}}>Purchase now</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
 
-    
+export default GetProductComponent;
