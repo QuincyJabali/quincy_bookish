@@ -97,15 +97,15 @@ const AddProductComponent = () => {
                             }}
                         >
                             <option value="">Select category</option>
-                            <option value="Fantasy">Fantasy</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Horror">Horror</option>
-                            <option value="Mystery/Thriller">Mystery/Thriller</option>
-                            <option value="Historical Fiction">Historical Fiction</option>
-                            <option value="Self-Help">Self-Help</option>
-                            <option value="Biography">Biography</option>
-                            <option value="Memoir/Autobiography">Memoir/Autobiography</option>
-                            <option value="True Crime">True Crime</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="romance">Romance</option>
+                            <option value="horror">Horror</option>
+                            <option value="thriller">Mystery/Thriller</option>
+                            <option value="historical Fiction">Historical Fiction</option>
+                            <option value="selfhelp">Self-Help</option>
+                            <option value="biography">Biography</option>
+                            <option value="autobiography">Memoir/Autobiography</option>
+                            <option value="truecrime">True Crime</option>
                         </select>
                         <br />
 

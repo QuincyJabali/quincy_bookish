@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import SearchBarComponent from "./SearchBarComponent";
+
 
 const NavbarComponent = () => {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -31,6 +31,7 @@ const NavbarComponent = () => {
                     </form> */}
                     <form>
                         {/* <SearchBarComponent/> */}
+                     
                     </form>
                 </div>
 
