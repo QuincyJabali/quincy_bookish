@@ -101,7 +101,7 @@ const AddProductComponent = () => {
                             <option value="romance">Romance</option>
                             <option value="horror">Horror</option>
                             <option value="thriller">Mystery/Thriller</option>
-                            <option value="historical Fiction">Historical Fiction</option>
+                            <option value="historicalfiction">Historical Fiction</option>
                             <option value="selfhelp">Self-Help</option>
                             <option value="biography">Biography</option>
                             <option value="autobiography">Memoir/Autobiography</option>

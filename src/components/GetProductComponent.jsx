@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import NavbarComponent from "./NavbarComponent";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import {motion} from "framer-motion"
 const GetProductsComponent = () => {
   let [products, setProducts] = useState([]);
   let [loading, setLoading] = useState("");
@@ -11,6 +11,7 @@ const GetProductsComponent = () => {
   let [thriller,setThriller]=useState([])  
   let [fantasy, setFantasy] = useState([]);
   let [history,setHistory]= useState([])
+  let [is_open,setIsOpen]=useState(false)
 
 
   let [search_word, setSearchWord] = useState("");
@@ -95,7 +96,7 @@ const GetProductsComponent = () => {
           </div>
         </div>
 
-        {filtered_products.map((product) => (
+         {filtered_products.map((product) => (
           <div className="col-md-3 justify-content-center mb-4">
             <div className="card shadow card-margin">
               <img
@@ -104,25 +105,33 @@ const GetProductsComponent = () => {
                 className="product_img mt-4"
               />
 
-              <div className="card-body">
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
                 <h5 className="mt-2">{product.product_name}</h5>
-                <p className="text-muted">{product.product_description}</p>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
                 <p className="text-danger">{product.product_author}</p>
                 <b className="text-warning">{product.product_cost}</b>
                 <br />
                 <br />
                 <button
-                  className="btn btn-dark"
+                  className="btn btn-danger"
                   onClick={() => {
                     navigator("/makepayment", { state: { product } });
                   }}
                 >
                   Purchase Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}
+
 
         <h2 className="text-center text-success  my-2 p-4"> <span>Fantasy</span></h2>
 
@@ -135,9 +144,16 @@ const GetProductsComponent = () => {
                 className="product_img mt-4"
               />
 
-              <div className="card-body">
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
                 <h5 className="mt-2">{product.product_name}</h5>
-                <p className="text-muted">{product.product_description}</p>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
                 <p className="text-danger">{product.product_author}</p>
                 <b className="text-warning">{product.product_cost}</b>
                 <br />
@@ -150,14 +166,14 @@ const GetProductsComponent = () => {
                 >
                   Purchase Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}
 
         <h2 className="text-center text-success my-2 p-4"><span>Horror</span></h2>
 
-        {horror.map((product) => (
+         {horror.map((product) => (
           <div className="col-md-3 justify-content-center mb-4">
             <div className="card shadow card-margin">
               <img
@@ -166,9 +182,16 @@ const GetProductsComponent = () => {
                 className="product_img mt-4"
               />
 
-              <div className="card-body">
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
                 <h5 className="mt-2">{product.product_name}</h5>
-                <p className="text-muted">{product.product_description}</p>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
                 <p className="text-danger">{product.product_author}</p>
                 <b className="text-warning">{product.product_cost}</b>
                 <br />
@@ -181,14 +204,16 @@ const GetProductsComponent = () => {
                 >
                   Purchase Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}
+
+       
 
            <h2 className="text-center text-success my-2 p-4"><span>Thriller</span></h2>
 
-         {thriller.map((product) => (
+            {thriller.map((product) => (
           <div className="col-md-3 justify-content-center mb-4">
             <div className="card shadow card-margin">
               <img
@@ -197,9 +222,16 @@ const GetProductsComponent = () => {
                 className="product_img mt-4"
               />
 
-              <div className="card-body">
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
                 <h5 className="mt-2">{product.product_name}</h5>
-                <p className="text-muted">{product.product_description}</p>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
                 <p className="text-danger">{product.product_author}</p>
                 <b className="text-warning">{product.product_cost}</b>
                 <br />
@@ -212,14 +244,16 @@ const GetProductsComponent = () => {
                 >
                   Purchase Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}
+
+        
 
          <h2 className="text-center text-success my-2 p-4"><span>Historical Fiction</span></h2>
 
-           {history.map((product) => (
+         {history.map((product) => (
           <div className="col-md-3 justify-content-center mb-4">
             <div className="card shadow card-margin">
               <img
@@ -228,9 +262,16 @@ const GetProductsComponent = () => {
                 className="product_img mt-4"
               />
 
-              <div className="card-body">
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
                 <h5 className="mt-2">{product.product_name}</h5>
-                <p className="text-muted">{product.product_description}</p>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
                 <p className="text-danger">{product.product_author}</p>
                 <b className="text-warning">{product.product_cost}</b>
                 <br />
@@ -243,10 +284,13 @@ const GetProductsComponent = () => {
                 >
                   Purchase Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}
+
+
+           
 
       </div>
     </div>

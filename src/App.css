@@ -81,7 +81,7 @@ span:hover::before {
 .card:hover {
   background-color: #e0e0e0;
   transform: scale(1.05); /*  make the card slightly larger */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* add a shadow */
+  box-shadow: 0 4px 8px rgba(254, 248, 248, 0.2); /* add a shadow */
 }
 
 
