@@ -12,7 +12,7 @@ const NavbarComponent = () => {
     return (
         <nav className="navbar navbar-expand-lg">
 
-            <Link className="navbar-brand" to="/">Bookish</Link>
+            <Link className="navbar-brand" to="/"><img src="BOOKISH.png" alt="" style={{height:100}}/></Link>
 
             <button className="navbar-toggler" type="button" data-bs-collapse="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>

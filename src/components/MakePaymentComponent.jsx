@@ -36,7 +36,7 @@ const MakePaymentComponent = () => {
     const img_url = "https://quincyj.alwaysdata.net/static/images/"
     return (
         <div className="row justify-content-center mt-3">
-            <h2>LIPA NA MPESA</h2>
+            <h2 className="text-success">LIPA NA MPESA</h2>
             <div className="col-md-3">
                 <img src={img_url + product.product_image} className="rounded img-thumbnail" alt="" />
             </div>

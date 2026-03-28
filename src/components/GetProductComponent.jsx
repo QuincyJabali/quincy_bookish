@@ -10,7 +10,13 @@ const GetProductsComponent = () => {
   let [horror, setHorror] = useState([]);
   let [thriller,setThriller]=useState([])  
   let [fantasy, setFantasy] = useState([]);
-  let [history,setHistory]= useState([])
+  let [history,setHistory]= useState([]);
+  let [romance,setRomance]=useState([])
+  let [selfhelp,setSelfhep]=useState([])
+  let [biography,setBiography]=useState([])
+  let [truecrime,setTruecrime]=useState([])
+  let [autobiography,setAutobiography]=useState([])
+
   let [is_open,setIsOpen]=useState(false)
 
 
@@ -52,6 +58,23 @@ const GetProductsComponent = () => {
 
         let history_cat = response.data.filter((product)=> product.product_category === "historicalfiction" ,)
         setHistory(history_cat)
+
+        let romance = response.data.filter((product)=> product.product_category === "romance" ,)
+        setRomance(romance)
+
+        let biography = response.data.filter((product)=> product.product_category === "biography" ,)
+        setBiography(biography)
+
+        let selfhelp = response.data.filter((product)=> product.product_category === "selfhelp" ,)
+        setSelfhep(selfhelp)
+
+        let autobiography = response.data.filter((product)=> product.product_category === "autobiography" ,)
+        setAutobiography(autobiography)
+
+        let truecrime = response.data.filter((product)=> product.product_category === "truecrime" ,)
+        setTruecrime(truecrime)
+
+
       }
     } catch (error) {
       setLoading("");
@@ -86,7 +109,7 @@ const GetProductsComponent = () => {
           <div className="col-md-3">
             <input
               type="text"
-              placeholder="Search Product by name"
+              placeholder="Search Book by name"
               className="form-control"
               value={search_word}
               onChange={(e) => {
@@ -290,6 +313,198 @@ const GetProductsComponent = () => {
         ))}
 
 
+         <h2 className="text-center text-success my-2 p-4"><span>Romance</span></h2>
+
+         {romance.map((product) => (
+          <div className="col-md-3 justify-content-center mb-4">
+            <div className="card shadow card-margin">
+              <img
+                src={img_url + product.product_image}
+                alt=""
+                className="product_img mt-4"
+              />
+
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
+                <h5 className="mt-2">{product.product_name}</h5>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
+                <p className="text-danger">{product.product_author}</p>
+                <b className="text-warning">{product.product_cost}</b>
+                <br />
+                <br />
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    navigator("/makepayment", { state: { product } });
+                  }}
+                >
+                  Purchase Now
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        ))}
+
+
+         <h2 className="text-center text-success my-2 p-4"><span>Self Help</span></h2>
+
+         {selfhelp.map((product) => (
+          <div className="col-md-3 justify-content-center mb-4">
+            <div className="card shadow card-margin">
+              <img
+                src={img_url + product.product_image}
+                alt=""
+                className="product_img mt-4"
+              />
+
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
+                <h5 className="mt-2">{product.product_name}</h5>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
+                <p className="text-danger">{product.product_author}</p>
+                <b className="text-warning">{product.product_cost}</b>
+                <br />
+                <br />
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    navigator("/makepayment", { state: { product } });
+                  }}
+                >
+                  Purchase Now
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        ))}
+
+
+         <h2 className="text-center text-success my-2 p-4"><span>Biography</span></h2>
+
+         {biography.map((product) => (
+          <div className="col-md-3 justify-content-center mb-4">
+            <div className="card shadow card-margin">
+              <img
+                src={img_url + product.product_image}
+                alt=""
+                className="product_img mt-4"
+              />
+
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
+                <h5 className="mt-2">{product.product_name}</h5>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
+                <p className="text-danger">{product.product_author}</p>
+                <b className="text-warning">{product.product_cost}</b>
+                <br />
+                <br />
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    navigator("/makepayment", { state: { product } });
+                  }}
+                >
+                  Purchase Now
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        ))}
+
+
+         <h2 className="text-center text-success my-2 p-4"><span>Autobiography</span></h2>
+
+         {autobiography.map((product) => (
+          <div className="col-md-3 justify-content-center mb-4">
+            <div className="card shadow card-margin">
+              <img
+                src={img_url + product.product_image}
+                alt=""
+                className="product_img mt-4"
+              />
+
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
+                <h5 className="mt-2">{product.product_name}</h5>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
+                <p className="text-danger">{product.product_author}</p>
+                <b className="text-warning">{product.product_cost}</b>
+                <br />
+                <br />
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    navigator("/makepayment", { state: { product } });
+                  }}
+                >
+                  Purchase Now
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        ))}
+
+         <h2 className="text-center text-success my-2 p-4"><span>True Crime</span></h2>
+
+         {truecrime.map((product) => (
+          <div className="col-md-3 justify-content-center mb-4">
+            <div className="card shadow card-margin">
+              <img
+                src={img_url + product.product_image}
+                alt=""
+                className="product_img mt-4"
+              />
+
+              <motion.div layout="position" 
+                transition={{layout : {duration : 0.3 }}}
+              onClick={()=> setIsOpen(!is_open)} 
+              className="card-body">
+
+                
+                <h5 className="mt-2">{product.product_name}</h5>
+                {is_open &&
+                <motion.p className="text-muted">{product.product_description}</motion.p>
+}               <p>read more -></p>
+                <p className="text-danger">{product.product_author}</p>
+                <b className="text-warning">{product.product_cost}</b>
+                <br />
+                <br />
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    navigator("/makepayment", { state: { product } });
+                  }}
+                >
+                  Purchase Now
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        ))}
            
 
       </div>
